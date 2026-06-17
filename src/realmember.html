@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAH-TEHILLAH Member Dashboard</title>
-<link rel="shortcut icon" href="/src/images/DAH-RL1.png" type="image/x-icon">
+<title>DA-TEHILLAH Member Dashboard</title>
+<link rel="shortcut icon" href="/src/images/DA-RL1.png" type="image/x-icon">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -34,6 +34,20 @@ body{
 .glow-gold{
     box-shadow: 0 0 25px rgba(212,175,55,0.25);
 }
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-marquee {
+    display: inline-block;
+    animation: marquee 22s linear infinite;
+}
 </style>
 </head>
 
@@ -54,7 +68,7 @@ body{
         </h1>
 
         <p class="text-gray-300 mt-3">
-            Welcome to DAH-TEHILLAH Member Portal
+            Welcome to DA-TEHILLAH Member Portal
         </p>
 
         <div class="mt-6 w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mx-auto"></div>
@@ -67,7 +81,7 @@ body{
     <div class="glass mx-4 mt-4 rounded-2xl px-6 py-4 flex justify-between items-center">
 
         <h1 class="font-bold text-lg tracking-wide text-yellow-400">
-            DAH-TEHILLAH DASHBOARD
+            DA-TEHILLAH DASHBOARD
         </h1>
 
         <button onclick="logout()"
@@ -79,16 +93,109 @@ body{
 
 <!-- ================= MAIN ================= -->
 <main class="pt-28 px-6 max-w-7xl mx-auto">
+<section class="glass relative overflow-hidden rounded-2xl border border-[#3B3020] shadow-xl">
 
+    <!-- Marquee -->
+    <div class="glass overflow-hidden border-b border-[#ab7834] ]">
+
+        <div class="whitespace-nowrap animate-marquee py-2">
+
+            <span class="mx-10 text-xs tracking-[4px] uppercase text-[#f3a109]">
+                🌿 Premium Member • Secure Dashboard • DA-TEHILLAH FARM Ventures • Trusted Agriculture Investment • Premium Member • Secure Dashboard •
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="px-6 py-8 sm:px-8 md:px-12">
+
+        <!-- Small Badge -->
+        <div class="glass inline-flex items-center rounded-full border border-[#4E3D22]  px-4 py-1">
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+            bg-emerald-950/70 border border-emerald-700/40
+            shadow-lg shadow-emerald-900/20">
+
+    <!-- Verification Icon -->
+    <div class="flex items-center justify-center w-6 h-6 rounded-full
+                bg-emerald-600">
+
+        <svg xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="3">
+
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"/>
+
+        </svg>
+
+    </div>
+
+    <!-- Text -->
+    <div class="flex flex-col leading-none">
+
+        <span class="text-[10px] uppercase tracking-[3px] text-gray-400">
+            Account Status
+        </span>
+
+        <span class="text-sm font-semibold text-emerald-300">
+            Verified Member
+        </span>
+
+    </div>
+
+</div>
+
+        </div>
+
+        <!-- Welcome -->
+        <h2 class="mt-5 text-sm font-medium uppercase tracking-[3px] text-gray-400">
+            Welcome Back
+        </h2>
+
+        <!-- Dynamic Name -->
+        <h1 id="welcomeMember"
+            class="mt-2 text-2xl font-bold text-[#C3A15A] sm:text-3xl">
+        </h1>
+
+        <!-- Description -->
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-gray-400">
+
+            Welcome to the official members portal of
+            <span class="font-semibold text-[#A88442]">
+                DA-TEHILLAH FARM Ventures.
+            </span>
+
+            Access premium investment opportunities, farm reports,
+            member resources, exclusive benefits, and personalized support.
+
+        </p>
+
+    </div>
+
+</section>
+<br>
     <!-- HERO -->
     <section class="glass rounded-3xl p-8 glow-gold">
+
+       
 
         <h2 class="text-3xl font-bold text-green-300">
             Welcome Back, Member 🌿
         </h2>
 
+         <h1 id="welcomeMember"
+        class="text-2xl font-bold text-green-800 text-center mt-10">
+        </h1>
+        
         <p class="text-gray-300 mt-2">
-            Exclusive access to DAH-TEHILLAH Farm Ventures dashboard.
+            Exclusive access to DA-TEHILLAH FARM Ventures dashboard.
         </p>
 
         <div class="mt-6 flex gap-4 flex-wrap">
@@ -113,12 +220,12 @@ body{
         <div class="glass p-6 rounded-2xl hover:scale-105 transition">
             <h3 class="text-yellow-400 font-bold">Investment</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Track your farm investment portfolio.
+                Track your FARM investment portfolio.
             </p>
         </div>
 
         <div class="glass p-6 rounded-2xl hover:scale-105 transition">
-            <h3 class="text-yellow-400 font-bold">Farm Updates</h3>
+            <h3 class="text-yellow-400 font-bold">FARM Updates</h3>
             <p class="text-gray-300 text-sm mt-2">
                 Real-time agricultural progress reports.
             </p>
@@ -127,7 +234,7 @@ body{
         <div class="glass p-6 rounded-2xl hover:scale-105 transition">
             <h3 class="text-yellow-400 font-bold">Training</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Access modern farming tutorials & guides.
+                Access modern FARMing tutorials & guides.
             </p>
         </div>
 <br><br><br>
@@ -142,7 +249,7 @@ body{
         </h2>
 
         <p class="text-gray-300 mt-3 max-w-2xl mx-auto">
-            Exclusive access to premium agricultural opportunities, investment updates, and farm participation benefits available to registered members.
+            Exclusive access to premium agricultural opportunities, investment updates, and FARM participation benefits available to registered members.
         </p>
     </div>
 
@@ -154,16 +261,16 @@ body{
             <div class="text-4xl mb-3">💰</div>
             <h3 class="text-xl font-bold text-green-300">Investment Plans</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Access structured farm investment packages with transparent ROI tracking.
+                Access structured FARM investment packages with transparent ROI tracking.
             </p>
         </div>
 
         <!-- Card 2 -->
         <div class="glass p-6 rounded-2xl hover:scale-105 transition duration-300">
             <div class="text-4xl mb-3">🌿</div>
-            <h3 class="text-xl font-bold text-green-300">Live Farm Updates</h3>
+            <h3 class="text-xl font-bold text-green-300">Live FARM Updates</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Get real-time updates on crops, livestock, and ongoing farm projects.
+                Get real-time updates on crops, livestock, and ongoing FARM projects.
             </p>
         </div>
 
@@ -179,9 +286,9 @@ body{
         <!-- Card 4 -->
         <div class="glass p-6 rounded-2xl hover:scale-105 transition duration-300">
             <div class="text-4xl mb-3">🚜</div>
-            <h3 class="text-xl font-bold text-green-300">Farm Participation</h3>
+            <h3 class="text-xl font-bold text-green-300">FARM Participation</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Participate in seasonal farming activities and training sessions.
+                Participate in seasonal FARMing activities and training sessions.
             </p>
         </div>
 
@@ -190,7 +297,7 @@ body{
             <div class="text-4xl mb-3">📚</div>
             <h3 class="text-xl font-bold text-green-300">Training Access</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Learn modern agricultural techniques and farm management systems.
+                Learn modern agricultural techniques and FARM management systems.
             </p>
         </div>
 
@@ -199,7 +306,7 @@ body{
             <div class="text-4xl mb-3">🤝</div>
             <h3 class="text-xl font-bold text-green-300">Community Network</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Connect with investors, farmers, and agricultural experts.
+                Connect with investors, FARMers, and agricultural experts.
             </p>
         </div>
 
@@ -218,7 +325,7 @@ body{
         </h2>
 
         <p class="text-gray-300 mt-4 max-w-3xl mx-auto">
-            Real-time farming insights, seasonal guidance, and member-exclusive agricultural planning tools powered by DAH-TEHILLAH systems.
+            Real-time FARMing insights, seasonal guidance, and member-exclusive agricultural planning tools powered by DA-TEHILLAH systems.
         </p>
     </div>
 
@@ -242,7 +349,7 @@ body{
             <div class="text-4xl">⛔</div>
             <h3 class="text-xl font-bold text-red-300 mt-3">Restricted Planting</h3>
             <p class="text-gray-300 text-sm mt-2">
-                Low rainfall or dry conditions — irrigation required before farming activities.
+                Low rainfall or dry conditions — irrigation required before FARMing activities.
             </p>
             <div class="mt-4 text-xs text-red-400 font-semibold">
                 STATUS: CONTROLLED
@@ -279,16 +386,16 @@ body{
     <div class="mt-10 glass rounded-3xl p-8 text-center">
 
         <h3 class="text-2xl font-bold text-green-300">
-            Member Farming Advisory
+            Member FARMing Advisory
         </h3>
 
         <p class="text-gray-300 mt-3 max-w-2xl mx-auto">
-            DAH-TEHILLAH recommends crop rotation strategy every 2–3 cycles to improve soil fertility and maximize yield performance across all registered farms.
+            DA-TEHILLAH recommends crop rotation strategy every 2–3 cycles to improve soil fertility and maximize yield performance across all registered FARMs.
         </p>
 
         <button onclick="openCalendar()"
         class="mt-6 px-6 py-3 bg-yellow-400 text-black font-bold rounded-xl hover:scale-105 transition">
-        View Full Farming Calendar
+        View Full FARMing Calendar
         </button>
 
     </div>
@@ -306,7 +413,7 @@ body{
         </button>
 
         <h2 class="text-3xl font-black text-yellow-400 text-center">
-            🌾 Farming Calendar 2026
+            🌾 FARMing Calendar 2026
         </h2>
 
         <p class="text-gray-300 text-center mt-2">
@@ -443,6 +550,15 @@ function showLoginSuccess(){
         }, 800);
 
     }, 2500); // wait 2.5 seconds before fading out
+}
+
+const memberName = localStorage.getItem("memberName");
+
+if (memberName) {
+
+    document.getElementById("welcomeMember").innerHTML =
+        `WELCOME <span style="color:#D4AF37;text-transform:uppercase;">${memberName}</span> TO THE REAL MEMBERS OF DA-TEHILLAH FARM VENTURES`;
+
 }
 </script>
 

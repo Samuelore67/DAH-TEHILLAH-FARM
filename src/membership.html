@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAH-TEHILLAH FARM</title>
+    <title>DA-TEHILLAH FARM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="shortcut icon" href="/src/images/DAH-RL1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/src/images/DA-RL1.png" type="image/x-icon">
     <style>
 
 /* ========================================
@@ -252,6 +252,166 @@
 </style>
 </head>
 <body>
+
+<!-- Registration Modal -->
+<div id="registerModal"
+     class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/70 backdrop-blur-md">
+
+    <!-- Wrapper -->
+    <div class="flex min-h-screen items-start justify-center p-4 sm:p-6 md:p-8">
+
+        <!-- Modal Card -->
+        <div
+            class="my-8 w-full max-w-2xl overflow-hidden rounded-3xl border border-amber-700/30 bg-[#0E1512] shadow-2xl">
+
+            <!-- Sticky Header -->
+            <div
+                class="sticky top-0 z-10 border-b border-white/10 bg-[#0E1512]/95 p-6 backdrop-blur">
+
+                <div class="flex items-center justify-between">
+
+                    <div>
+
+                        <h2 class="text-2xl font-bold text-amber-400 mt-10">
+                            Membership Registration
+                        </h2>
+
+                        <p class="mt-2 text-sm text-gray-400">
+                            Complete your information below to become a registered member.
+                        </p>
+
+                    </div>
+
+                    <!-- Close Button -->
+                    <button
+                        onclick="closeModal()"
+                        class="rounded-full bg-white/5 p-2 text-gray-400 transition hover:bg-red-500 hover:text-white">
+
+                        ✕
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Scrollable Form -->
+            <div class="max-h-[70vh] overflow-y-auto">
+
+                <form id="registerForm" class="grid gap-5 p-6 md:grid-cols-2">
+
+                    <input
+                        id="fullname"
+                        type="text"
+                        placeholder="Full Name"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        placeholder="Phone Number"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Email Address"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                    <select
+                        id="gender"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                        <option value="">Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+
+                    </select>
+
+                    <input
+                        id="state"
+                        type="text"
+                        placeholder="State"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                    <input
+                        id="city"
+                        type="text"
+                        placeholder="City"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                    <input
+                        id="occupation"
+                        type="text"
+                        placeholder="Occupation"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                    <select
+                        id="investment"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500">
+
+                        <option value="">Investment Interest</option>
+                        <option>Poultry Farming</option>
+                        <option>Crop Farming</option>
+                        <option>Livestock</option>
+                        <option>General Investment</option>
+
+                    </select>
+
+                    <input
+                        id="referral"
+                        type="text"
+                        placeholder="Referral Code (Optional)"
+                        class="rounded-xl bg-[#16211B] p-4 text-white outline-none transition focus:ring-2 focus:ring-amber-500 md:col-span-2">
+
+                    <label class="flex items-center gap-3 md:col-span-2">
+
+                        <input
+                            id="agree"
+                            type="checkbox"
+                            class="h-5 w-5 rounded accent-amber-500">
+
+                        <span class="text-sm text-gray-300">
+                            I confirm the information provided is correct.
+                        </span>
+
+                    </label>
+
+                </form>
+
+            </div>
+
+            <!-- Sticky Footer -->
+            <div
+                class="sticky bottom-0 flex justify-end gap-4 border-t border-white/10 bg-[#0E1512]/95 p-6 backdrop-blur">
+
+                <button
+                    type="button"
+                    onclick="closeModal()"
+                    class="rounded-xl border border-gray-600 px-6 py-3 text-gray-300 transition hover:border-red-500 hover:text-red-400">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    form="registerForm"
+                    type="submit"
+                    class="rounded-xl bg-amber-500 px-8 py-3 font-semibold text-black transition hover:bg-amber-400">
+
+                    Submit Registration
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
     <!-- Membership Modal -->
 <div id="memberModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[9999] flex items-center justify-center px-4">
 
@@ -311,18 +471,18 @@
 
     <!-- Logo Image -->
     <img
-        src="images/DAH-RL1.png"
-        alt="DAH-TEHILLAH FARM VENTURES Logo"
+        src="images/DA-RL1.png"
+        alt="DA-TEHILLAH FARM VENTURES Logo"
         class="w-10 md:w-12 h-auto object-contain flex-shrink-0">
 
     <!-- Company Name -->
     <div class="leading-tight">
         <h1 class="text-white font-bold text-sm md:text-base">
-            DAH-TEHILLAH
+            DA-TEHILLAH
         </h1>
 
         <p class="text-yellow-400 text-[10px] md:text-xs uppercase tracking-wider">
-            Farm Ventures
+            FARM Ventures
         </p>
     </div>
 
@@ -438,21 +598,22 @@ Invest Now
                 </span>
 
                 <h1 class="mt-6 text-5xl lg:text-6xl font-extrabold leading-tight text-white">
-                    Become a <span class="text-yellow-400">DAH-TEHILLAH</span> Member
+                    Become a <span class="text-yellow-400">DA-TEHILLAH</span> Member
                 </h1>
 
                 <p class="mt-6 text-lg text-green-100 leading-8">
-                    Join a trusted agricultural community and enjoy exclusive investment opportunities, professional farming training, premium member benefits, and priority access to our livestock and crop projects.
+                    Join a trusted agricultural community and enjoy exclusive investment opportunities, professional FARMing training, premium member benefits, and priority access to our livestock and crop projects.
                 </p>
 
                 <div class="mt-10 flex flex-wrap gap-5">
 
-                    <a href="https://wa.me/2349138774140?text=Hello%20DAH-TEHILLAH%20Farm%20Ventures.%20I%20would%20like%20to%20become%20a%20registered%20member."
-                        class="px-8 py-4 bg-yellow-400 text-green-900 font-bold rounded-full hover:bg-yellow-300 duration-300 shadow-xl">
+                   <button
+                    onclick="openModal()"
+                    class="rounded-full bg-amber-400 px-8 py-4 font-bold text-green-950 transition hover:scale-105 hover:bg-amber-300">
 
-                        Register Now
+                    Register Now
 
-                    </a>
+                    </button>
 
                     <button onclick="openMemberModal()"
                         class="px-8 py-4 border-2 border-white text-white rounded-full hover:bg-white hover:text-green-900 duration-300 font-semibold">
@@ -470,7 +631,7 @@ Invest Now
 
             <div class="relative">
 
-                <img src="images/DAH-RL1.png"
+                <img src="images/DA-RL1.png"
                     class="rounded-3xl shadow-2xl object-cover w-full h-[550px]">
 
                 <!-- Floating Card -->
@@ -505,7 +666,7 @@ Invest Now
                 Membership Benefits
             </h2>
             <p class="text-gray-500 mt-3 max-w-2xl mx-auto">
-                Join DAH-TEHILLAH Farm Ventures and enjoy exclusive agricultural opportunities, support, and profit-driven farming systems.
+                Join DA-TEHILLAH FARM Ventures and enjoy exclusive agricultural opportunities, support, and profit-driven FARMing systems.
             </p>
         </div>
 
@@ -515,9 +676,9 @@ Invest Now
             <!-- Card 1 -->
             <div class="group bg-green-50 border border-green-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-2">
                 <div class="text-3xl mb-4">🌱</div>
-                <h3 class="text-xl font-semibold text-green-900 mb-2">Modern Farming Support</h3>
+                <h3 class="text-xl font-semibold text-green-900 mb-2">Modern FARMing Support</h3>
                 <p class="text-gray-600 text-sm">
-                    Get access to expert-guided farming techniques, tools, and continuous agricultural support.
+                    Get access to expert-guided FARMing techniques, tools, and continuous agricultural support.
                 </p>
             </div>
 
@@ -533,9 +694,9 @@ Invest Now
             <!-- Card 3 -->
             <div class="group bg-green-50 border border-green-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-2">
                 <div class="text-3xl mb-4">🚜</div>
-                <h3 class="text-xl font-semibold text-green-900 mb-2">Farm Access & Training</h3>
+                <h3 class="text-xl font-semibold text-green-900 mb-2">FARM Access & Training</h3>
                 <p class="text-gray-600 text-sm">
-                    Practical training sessions and real-time exposure to modern farm operations.
+                    Practical training sessions and real-time exposure to modern FARM operations.
                 </p>
             </div>
 
@@ -544,7 +705,7 @@ Invest Now
                 <div class="text-3xl mb-4">📊</div>
                 <h3 class="text-xl font-semibold text-green-900 mb-2">Investment Transparency</h3>
                 <p class="text-gray-600 text-sm">
-                    Full visibility into farm operations, financial reports, and growth tracking.
+                    Full visibility into FARM operations, financial reports, and growth tracking.
                 </p>
             </div>
 
@@ -553,7 +714,7 @@ Invest Now
                 <div class="text-3xl mb-4">🌾</div>
                 <h3 class="text-xl font-semibold text-green-900 mb-2">Organic Produce Supply</h3>
                 <p class="text-gray-600 text-sm">
-                    Receive high-quality organic farm produce directly from our farms.
+                    Receive high-quality organic FARM produce directly from our FARMs.
                 </p>
             </div>
 
@@ -562,7 +723,7 @@ Invest Now
                 <div class="text-3xl mb-4">🤝</div>
                 <h3 class="text-xl font-semibold text-green-900 mb-2">Community Network</h3>
                 <p class="text-gray-600 text-sm">
-                    Connect with farmers, investors, and agricultural experts across the region.
+                    Connect with FARMers, investors, and agricultural experts across the region.
                 </p>
             </div>
 
@@ -590,13 +751,13 @@ Invest Now
                 <div class="flex items-center gap-3">
 
                 <img
-                    src="images/DAH-RL1.png"
-                    alt="DAH-TEHILLAH FARM VENTURES Logo"
+                    src="images/DA-RL1.png"
+                    alt="DA-TEHILLAH FARM VENTURES Logo"
                     class="w-10 md:w-12 h-auto object-contain flex-shrink-0">
 
                     <div>
                         <h3 class="font-black text-xl">
-                            DAH-TEHILLAH
+                            DA-TEHILLAH
                         </h3>
 
                         <p class="text-yellow-400 text-sm">
@@ -607,7 +768,7 @@ Invest Now
                 </div>
 
                 <p class="mt-6 text-gray-400 leading-relaxed">
-                    A premium agricultural ecosystem blending farming,
+                    A premium agricultural ecosystem blending FARMing,
                     tourism, innovation, education and investment
                     opportunities for sustainable growth.
                 </p>
@@ -674,7 +835,7 @@ Invest Now
                     </p>
 
                     <p>
-                        ✉️ da-tehillahfarms@gmail.com
+                        ✉️ da-tehillahFARMs@gmail.com
                     </p>
 
                 </div>
@@ -748,7 +909,7 @@ Invest Now
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
 
                 <p class="text-gray-500 text-center md:text-left">
-                    © 2026 DAH-TEHILLAH FARM VENTURES. All Rights Reserved.
+                    © 2026 DA-TEHILLAH FARM VENTURES. All Rights Reserved.
                 </p>
 
                 <p class="text-xs text-gray-500 text-center">
@@ -819,7 +980,9 @@ function openWhatsApp() {
 // ONLY ALLOWED EMAILS
 const approvedEmails = [
     "samuelore547@gmail.com",
-    "samuelore242@icloud.com"
+    "samuelore242@icloud.com",
+    "motunrayoogundele3@gmail.com",
+    "da-tehillahfarms@gmail.com"
 ];
 
 // MEMBERSHIP CODES
@@ -838,18 +1001,111 @@ function verifyMember() {
     const emailValid = approvedEmails.includes(email);
     const codeValid = validCodes.includes(code);
 
-    if (emailValid && codeValid) {
-        localStorage.setItem("memberAccess", "true");
-        window.location.href = "realmember.html";
-    } else {
-        errorMsg.classList.remove("hidden");
-    }
+   if (emailValid && codeValid) {
+
+    // Get the user's name from the email
+    const userName = email.split("@")[0];
+
+    // Save access
+    localStorage.setItem("memberAccess", "true");
+
+    // Save the user's name
+    localStorage.setItem("memberName", userName);
+
+    // Open the member page
+    window.location.href = "realmember.html";
+
+} else {
+    errorMsg.classList.remove("hidden");
+}
 }
 
 
+function openModal() {
+    document.getElementById("registerModal").classList.remove("hidden");
+    document.body.classList.add("overflow-hidden"); // optional but good UX
+}
+
+function closeModal() {
+    document.getElementById("registerModal").classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
+}
 
 // ================= AUTO PROTECT =================
-protectMemberPage();
+if (typeof protectMemberPage === "function") {
+    protectMemberPage();
+}
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("registerForm");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // GET VALUES
+        const fullname = document.getElementById("fullname").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const gender = document.getElementById("gender").value;
+        const state = document.getElementById("state").value.trim();
+        const city = document.getElementById("city").value.trim();
+        const occupation = document.getElementById("occupation").value.trim();
+        const investment = document.getElementById("investment").value;
+        const referral = document.getElementById("referral").value.trim();
+        const agree = document.getElementById("agree");
+
+        // EMPTY CHECK
+        if (!fullname || !phone || !email || !gender || !state || !city || !occupation || !investment) {
+            alert("⚠️ Please fill in all required fields.");
+            return;
+        }
+
+        // VALIDATION
+        if (fullname.length < 5) {
+            alert("⚠️ Full name must be at least 5 characters.");
+            return;
+        }
+
+        if (!/^0\d{10}$/.test(phone)) {
+            alert("⚠️ Enter a valid Nigerian phone number.");
+            return;
+        }
+
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert("⚠️ Enter a valid email address.");
+            return;
+        }
+
+        if (!agree.checked) {
+            alert("⚠️ You must agree before submitting.");
+            return;
+        }
+
+        // MESSAGE
+        const message =
+`🌿 NEW MEMBERSHIP REGISTRATION
+
+👤 Full Name: ${fullname}
+📱 Phone: ${phone}
+📧 Email: ${email}
+🚻 Gender: ${gender}
+🏠 State: ${state}
+🏙️ City: ${city}
+💼 Occupation: ${occupation}
+🌾 Investment: ${investment}
+🎁 Referral: ${referral || "None"}
+
+✅ Status: Ready for approval`;
+
+        // WHATSAPP LINK
+        const url = "https://wa.me/2349138774140?text=" + encodeURIComponent(message);
+
+        window.open(url, "_blank");
+    });
+
+});
 </script>
 </body>
 </html>
