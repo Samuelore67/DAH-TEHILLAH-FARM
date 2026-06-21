@@ -1135,15 +1135,6 @@ function verifyMember() {
 }
 
 
-    // LOGIN SUCCESS
-    localStorage.setItem("memberAccess", "true");
-    localStorage.setItem("memberEmail", user.email);
-    localStorage.setItem("memberName", user.name || user.email);
-    localStorage.setItem("memberRole", user.role);
-
-    window.location.href = "realmember.html";
-}
-
 function openModal() {
     document.getElementById("registerModal").classList.remove("hidden");
     document.body.classList.add("overflow-hidden"); // optional but good UX
