@@ -19,20 +19,56 @@
         }
     </script>
 </head>
-<body class="bg-gray-100">
-    <div class="flex min-h-screen">
-        <aside class="bg-primary w-64 min-h-screen p-6 fixed left-0 top-0">
-            <div class="mb-8">
-                <div class="flex items-center space-x-3">
-                    <div class="bg-accent w-10 h-10 rounded-full flex items-center justify-center">
-                        <img src="/src/images/DA-RL4.png" alt="">
-                    </div>
-                    <div>
-                        <h1 class="text-white font-bold">DA-TEHILLAH</h1>
-                        <p class="text-accent text-xs">FARM VENTURES</p>
-                    </div>
+ <!-- Overlay -->
+<div id="overlay"
+     class="fixed inset-0 bg-black/50 hidden z-40 lg:hidden"
+     onclick="closeSidebar()"></div>
+
+<!-- Sidebar -->
+<aside  id="sidebar"
+class="fixed top-0 left-0 z-50 w-64 h-screen bg-primary p-6 pb-28 overflow-y-auto
+transform -translate-x-full lg:translate-x-0
+transition-transform duration-300 ease-in-out shadow-2xl">
+    <!-- Logo -->
+    <div class="mb-8">
+        <div class="flex items-center justify-between">
+
+            <div class="flex items-center space-x-3">
+                <div class="bg-accent w-10 h-10 rounded-full flex items-center justify-center">
+                    <img src="/src/images/DA-RL4.png" alt="">
+                </div>
+
+                <div>
+                    <h1 class="text-white font-bold">DA-TEHILLAH</h1>
+                    <p class="text-accent text-xs">FARM VENTURES</p>
                 </div>
             </div>
+
+            <!-- Close button -->
+            <button
+                onclick="closeSidebar()"
+                class="lg:hidden text-white">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"/>
+
+                </svg>
+
+            </button>
+            
+
+        </div>
+    </div>
+
 
             <nav class="space-y-2">
                 <a href="dashboard.html" class="flex items-center px-4 py-3 text-white/70 hover:bg-primary/30 hover:text-white rounded-lg transition">
@@ -65,55 +101,124 @@
             </div>
         </aside>
 
-        <main class="flex-1 ml-64 p-8">
-            <div class="flex justify-between items-center mb-8">
-                <div>
-                    <h1 class="text-3xl font-bold text-gray-800">My Investments</h1>
-                    <p class="text-gray-500">Track all your investments</p>
-                </div>
-                <select id="statusFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    <option value="all">All Investments</option>
-                    <option value="pending">Pending</option>
-                    <option value="active">Active</option>
-                    <option value="completed">Completed</option>
-                </select>
-            </div>
+       <main class="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8 pt-6 lg:pt-8">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <p class="text-gray-500 text-sm mb-1">Total Invested</p>
-                    <p class="text-3xl font-bold text-primary" id="totalInvested">₦0</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <p class="text-gray-500 text-sm mb-1">Expected Returns</p>
-                    <p class="text-3xl font-bold text-accent" id="expectedReturns">₦0</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-sm p-6">
-                    <p class="text-gray-500 text-sm mb-1">Total Investments</p>
-                    <p class="text-3xl font-bold text-gray-800" id="totalInvestments">0</p>
-                </div>
-            </div>
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+        
+         <header class="flex items-center justify-between mb-8">
 
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead>
-                            <tr class="border-b border-gray-200">
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Plan</th>
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Amount</th>
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Expected Return</th>
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Payment Status</th>
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Investment Status</th>
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody id="investmentsTable">
-                            <tr><td colspan="6" class="text-center py-8 text-gray-500">Loading...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
+    <div class="flex items-center gap-4">
+
+        <!-- Mobile Menu Button -->
+        <button
+            onclick="toggleSidebar()"
+            class="lg:hidden bg-primary text-white p-2 rounded-lg shadow">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+
+            </svg>
+
+        </button>
+
+        <div>
+           
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">
+                My Investments
+            </h1>
+            <p class="text-gray-500 text-sm md:text-base">
+                Track all your investments
+            </p>
+        </div>
+</header>
+        <select
+            id="statusFilter"
+            class="w-full md:w-56 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+
+            <option value="all">All Investments</option>
+            <option value="pending">Pending</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+
+        </select>
+
+    </div>
+
+    <!-- Statistics -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <p class="text-gray-500 text-sm mb-1">Total Invested</p>
+            <p class="text-2xl md:text-3xl font-bold text-primary" id="totalInvested">
+                ₦0
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <p class="text-gray-500 text-sm mb-1">Expected Returns</p>
+            <p class="text-2xl md:text-3xl font-bold text-accent" id="expectedReturns">
+                ₦0
+            </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm p-6 sm:col-span-2 lg:col-span-1">
+            <p class="text-gray-500 text-sm mb-1">Total Investments</p>
+            <p class="text-2xl md:text-3xl font-bold text-gray-800" id="totalInvestments">
+                0
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-xl shadow-sm p-4 md:p-6">
+
+        <div class="overflow-x-auto">
+
+            <table class="min-w-[850px] w-full">
+
+                <thead>
+
+                    <tr class="border-b border-gray-200">
+
+                        <th class="text-left py-3 px-4 font-semibold text-gray-600">Plan</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-600">Amount</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-600">Expected Return</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-600">Payment Status</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-600">Investment Status</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-600">Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="investmentsTable">
+
+                    <tr>
+                        <td colspan="6" class="text-center py-8 text-gray-500">
+                            Loading...
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
     </div>
 
     <script>
@@ -215,6 +320,36 @@
 
         checkAuth();
         fetchInvestments();
+
+        const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+function toggleSidebar() {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+}
+
+function closeSidebar() {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+}
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1024) {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.add("hidden");
+    } else {
+        sidebar.classList.add("-translate-x-full");
+    }
+});
+
+document.querySelectorAll("#sidebar a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth < 1024) {
+            closeSidebar();
+        }
+    });
+});
     </script>
 </body>
 </html>

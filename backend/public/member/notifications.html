@@ -20,8 +20,47 @@
     </script>
 </head>
 <body class="bg-gray-100">
+    <!-- Mobile Top Bar -->
+<header class="lg:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <div class="flex items-center justify-between px-4 py-3">
+
+        <button onclick="toggleSidebar()" class="bg-primary text-white p-2 rounded-lg">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+
+            </svg>
+        </button>
+
+        <h2 class="font-bold text-primary">
+            DA-TEHILLAH FARMS
+        </h2>
+
+        <div class="w-10"></div>
+
+    </div>
+</header>
+
+<!-- Overlay -->
+<div
+id="overlay"
+class="fixed inset-0 bg-black/50 hidden z-40 lg:hidden"
+onclick="closeSidebar()"></div>
+
+
     <div class="flex min-h-screen">
-        <aside class="bg-primary w-64 min-h-screen p-6 fixed left-0 top-0">
+        <aside id="sidebar"
+        class="fixed top-0 left-0 w-64 h-screen bg-primary p-6 overflow-y-auto z-50
+        transform -translate-x-full lg:translate-x-0
+        transition-transform duration-300">
             <div class="mb-8">
                 <div class="flex items-center space-x-3">
                     <div class="bg-accent w-10 h-10 rounded-full flex items-center justify-center">
@@ -31,6 +70,24 @@
                         <h1 class="text-white font-bold">DA-TEHILLAH</h1>
                         <p class="text-accent text-xs">FARM VENTURES</p>
                     </div>
+                    <!-- Mobile Close Button -->
+<div class="flex justify-end mb-4 lg:hidden">
+    <button onclick="closeSidebar()" class="text-white">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24">
+
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"/>
+
+        </svg>
+    </button>
+</div>
                 </div>
             </div>
 
@@ -65,7 +122,7 @@
             </div>
         </aside>
 
-        <main class="flex-1 ml-64 p-8">
+        <main class="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8 pt-24 lg:pt-8">
             <div class="flex justify-between items-center mb-8">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-800">Notifications</h1>
@@ -170,6 +227,38 @@
 
         checkAuth();
         fetchNotifications();
+
+        const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+function toggleSidebar() {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+}
+
+function closeSidebar() {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+}
+
+// Keep sidebar open on desktop
+window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1024) {
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.add("hidden");
+    } else {
+        sidebar.classList.add("-translate-x-full");
+    }
+});
+
+// Close sidebar when a menu link is clicked
+document.querySelectorAll("#sidebar a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth < 1024) {
+            closeSidebar();
+        }
+    });
+});
     </script>
 </body>
 </html>

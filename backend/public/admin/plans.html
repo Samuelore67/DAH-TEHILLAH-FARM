@@ -20,25 +20,57 @@
     </script>
   </head>
   <body class="bg-gray-100">
-    <div class="flex min-h-screen">
-      <aside class="bg-primary w-64 min-h-screen p-6 fixed left-0 top-0">
-        <div class="mb-8">
-          <div class="flex items-center space-x-3">
-            <div
-              class="bg-accent w-10 h-10 rounded-full flex items-center justify-center"
-            >
-              <img src="/src/images/DA-RL4.png" alt="">
-                <path
-                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                />
-              </svg>
+    <!-- Overlay -->
+<div id="overlay"
+    onclick="closeSidebar()"
+    class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden">
+</div>
+
+<!-- Sidebar -->
+<aside
+    id="sidebar"
+    class="fixed top-0 left-0 z-50 w-64 h-screen bg-primary p-6 overflow-y-auto
+    transform -translate-x-full lg:translate-x-0
+    transition-transform duration-300 ease-in-out shadow-2xl">
+
+    <!-- Logo -->
+    <div class="flex items-center justify-between mb-8">
+
+        <div class="flex items-center space-x-3">
+
+            <div class="bg-accent w-10 h-10 rounded-full flex items-center justify-center">
+                <img src="/src/images/DA-RL4.png" alt="">
             </div>
+
             <div>
-              <h1 class="text-white font-bold">DA-TEHILLAH</h1>
-              <p class="text-accent text-xs">FARM VENTURES</p>
+                <h1 class="text-white font-bold">DA-TEHILLAH</h1>
+                <p class="text-accent text-xs">FARM VENTURES</p>
             </div>
-          </div>
+
         </div>
+
+        <!-- Close Button -->
+        <button
+            onclick="closeSidebar()"
+            class="lg:hidden text-white">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"/>
+
+            </svg>
+
+        </button>
+
+    </div>
 
         <nav class="space-y-2">
           <a
@@ -180,19 +212,53 @@
         </div>
       </aside>
 
-      <main class="flex-1 ml-64 p-8">
-        <header class="flex justify-between items-center mb-8">
-          <div>
-            <h1 class="text-3xl font-bold text-gray-800">Investment Plans</h1>
-            <p class="text-gray-500">Create and manage investment plans</p>
-          </div>
-          <button
-            onclick="openModal()"
-            class="bg-primary text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-800 transition"
-          >
-            + Add New Plan
-          </button>
-        </header>
+      <main class="flex-1 lg:ml-64 p-4 md:p-6 lg:p-8">
+       <header class="flex items-center justify-between mb-8">
+
+    <div class="flex items-center gap-4">
+
+        <!-- Mobile Menu -->
+        <button
+            onclick="toggleSidebar()"
+            class="lg:hidden bg-primary text-white p-2 rounded-lg shadow">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+
+            </svg>
+
+        </button>
+
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">
+                Investment Plans
+            </h1>
+
+            <p class="text-gray-500">
+                Create and manage investment plans
+            </p>
+        </div>
+
+    </div>
+
+    <button
+        onclick="openModal()"
+        class="bg-primary text-white px-4 md:px-6 py-2 rounded-lg font-semibold hover:bg-green-800 transition">
+
+        + Add New Plan
+
+    </button>
+
+</header>
 
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -207,9 +273,9 @@
 
     <div
       id="planModal"
-      class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50"
+      class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4 overflow-y-auto"
     >
-      <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+      <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-bold text-gray-800" id="modalTitle">
             Add New Plan
@@ -233,138 +299,154 @@
             </svg>
           </button>
         </div>
-        <form id="planForm" class="space-y-4">
-          <input type="hidden" id="planId" />
+       <form id="planForm" class="space-y-6">
 
-          <!-- Plan Name -->
-          <div>
-            <label class="block text-gray-700 text-sm font-semibold mb-2">
-              Plan Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              required
-              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-            />
-          </div>
+    <input type="hidden" id="planId">
 
-          <!-- Description -->
-          <div>
-            <label class="block text-gray-700 text-sm font-semibold mb-2">
-              Description
-            </label>
-            <textarea
-              id="description"
-              rows="3"
-              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-            ></textarea>
-          </div>
+    <!-- Plan Name -->
+    <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">
+            Plan Name
+        </label>
 
-          <!-- Pricing -->
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
+        <input
+            type="text"
+            id="name"
+            required
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition">
+    </div>
+
+    <!-- Description -->
+    <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-2">
+            Description
+        </label>
+
+        <textarea
+            id="description"
+            rows="4"
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 resize-none focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"></textarea>
+    </div>
+
+    <!-- Price + Admin Fee -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
                 Slot Price (₦)
-              </label>
-              <input
+            </label>
+
+            <input
                 type="number"
                 id="slot_price"
-                required
                 min="0"
-                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-              />
-            </div>
+                required
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+        </div>
 
-            <div>
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
                 Admin Fee (₦)
-              </label>
-              <input
+            </label>
+
+            <input
                 type="number"
                 id="admin_fee"
-                required
                 min="0"
-                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-              />
-            </div>
-          </div>
+                required
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+        </div>
 
-          <!-- ROI + Duration -->
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
+    </div>
+
+    <!-- ROI + Duration -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
                 ROI (%)
-              </label>
-              <input
+            </label>
+
+            <input
                 type="number"
                 id="roi_percentage"
-                required
                 min="0"
                 max="100"
-                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-              />
-            </div>
+                required
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+        </div>
 
-            <div>
-              <label class="block text-gray-700 text-sm font-semibold mb-2">
-                Duration (months)
-              </label>
-              <input
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Duration (Months)
+            </label>
+
+            <input
                 type="number"
                 id="duration_months"
-                required
                 min="1"
-                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-              />
-            </div>
-          </div>
+                required
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+        </div>
 
-          <!-- Max Slots -->
-          <div>
-            <label class="block text-gray-700 text-sm font-semibold mb-2">
-              Max Slots (optional)
+    </div>
+
+    <!-- Max Slots + Status -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Maximum Slots
             </label>
+
             <input
-              type="number"
-              id="max_slots"
-              min="1"
-              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-            />
-          </div>
+                type="number"
+                id="max_slots"
+                min="1"
+                placeholder="Optional"
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+        </div>
 
-          <!-- Status -->
-          <div>
-            <label class="block text-gray-700 text-sm font-semibold mb-2">
-              Status
+        <div>
+            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                Status
             </label>
+
             <select
-              id="status"
-              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
-            >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+                id="status"
+                class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+
+                <option value="active">🟢 Active</option>
+                <option value="inactive">🔴 Inactive</option>
+
             </select>
-          </div>
+        </div>
 
-          <!-- Buttons -->
-          <div class="flex space-x-4 pt-4">
-            <button
-              type="button"
-              onclick="closeModal()"
-              class="flex-1 bg-gray-200 py-2 rounded-lg font-semibold"
-            >
-              Cancel
-            </button>
+    </div>
 
-            <button
-              type="submit"
-              class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold"
-            >
-              Save Plan
-            </button>
-          </div>
-        </form>
+    <!-- Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+
+        <button
+            type="button"
+            onclick="closeModal()"
+            class="w-full sm:w-1/2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 rounded-lg transition">
+
+            Cancel
+
+        </button>
+
+        <button
+            type="submit"
+            class="w-full sm:w-1/2 bg-primary hover:bg-green-800 text-white font-semibold py-3 rounded-lg transition">
+
+            Save Plan
+
+        </button>
+
+    </div>
+
+</form>
       </div>
     </div>
 
@@ -611,6 +693,50 @@
 
       checkAuth();
       fetchPlans();
+
+      const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+function toggleSidebar() {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+}
+
+function closeSidebar() {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+}
+
+// Desktop
+window.addEventListener("resize", () => {
+
+    if (window.innerWidth >= 1024) {
+
+        sidebar.classList.remove("-translate-x-full");
+        overlay.classList.add("hidden");
+
+    } else {
+
+        sidebar.classList.add("-translate-x-full");
+
+    }
+
+});
+
+// Close sidebar after clicking a menu item on mobile
+document.querySelectorAll("#sidebar a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if (window.innerWidth < 1024) {
+
+            closeSidebar();
+
+        }
+
+    });
+
+});
     </script>
   </body>
 </html>
