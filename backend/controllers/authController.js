@@ -115,17 +115,24 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log("Email received:", email);
+    console.log("Password received:", password);
+
     const { data: user, error: userError } = await supabase
       .from("users")
       .select("*")
-      .eq("email", email)
+      .eq("email", email.trim().toLowerCase())
       .single();
+
+    console.log("Supabase error:", userError);
+    console.log("User found:", !!user);
 
     if (userError || !user) {
       return error(res, "Invalid credentials", 401);
     }
 
     const isMatch = await bcrypt.compare(password, user.password_hash);
+    console.log("Password match:", isMatch);
 
     if (!isMatch) {
       return error(res, "Invalid credentials", 401);
