@@ -51,7 +51,7 @@ const register = async (req, res) => {
 
     try {
       const result = await transporter.emails.send({
-        from: "DA-TEHILLAH FARM <onboarding@resend.dev>",
+        from: "DA-TEHILLAH FARM <noreply@da-tehillah-farms.com>",
         to: email,
         subject: "Verify your email",
         html: `
@@ -112,7 +112,7 @@ const verifyEmail = async (req, res) => {
   console.log("Redirecting...");
 
   return res.redirect(
-    "https://da-tehillah-farms.com//member/login.html?verified=true",
+    "https://da-tehillah-farms.com/member/login.html?verified=true",
   );
 };
 
