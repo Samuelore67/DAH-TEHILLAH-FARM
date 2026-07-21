@@ -1,3 +1,5 @@
+const path = require("path");
+const crypto = require("crypto");
 const supabase = require("../config/database");
 const { success, error } = require("../utils/responseHandler");
 
@@ -149,6 +151,29 @@ const createInvestment = async (req, res) => {
       maturityDate.getMonth() + Number(plan.duration_months),
     );
 
+    let proofUrl = null;
+
+    if (req.file) {
+      const fileExt = path.extname(req.file.originalname);
+
+      const fileName = `proofs/${crypto.randomUUID()}${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("proofs")
+        .upload(fileName, req.file.buffer, {
+          contentType: req.file.mimetype,
+        });
+
+      if (uploadError) {
+        console.error("Storage upload error:", uploadError);
+        return error(res, "Failed to upload payment proof", 500);
+      }
+
+      const { data } = supabase.storage.from("proofs").getPublicUrl(fileName);
+
+      proofUrl = data.publicUrl;
+    }
+
     // Data being inserted
     const investmentData = {
       user_id: userId,
@@ -161,7 +186,7 @@ const createInvestment = async (req, res) => {
       total_expected_return: totalReturn,
 
       // uploaded payment proof
-      proof_of_payment: req.file ? req.file.path : null,
+      proof_of_payment: proofUrl,
 
       start_date: new Date().toISOString(),
       maturity_date: maturityDate.toISOString(),
