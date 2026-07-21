@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const path = require("path");
+// const path = require("path");
 const { apiLimiter } = require("./middleware/rateLimiter");
 
 const authRoutes = require("./routes/authRoutes");
@@ -38,8 +38,8 @@ app.use(morgan("combined"));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-app.use(express.static(path.join(__dirname, "../src/public")));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use(express.static(path.join(__dirname, "../src/public")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(apiLimiter);
 

@@ -166,7 +166,7 @@
                                 <th class="text-left py-3 px-4 text-gray-600 font-semibold">Member</th>
                                 <th class="text-left py-3 px-4 text-gray-600 font-semibold">Plan</th>
                                 <th class="text-left py-3 px-4 text-gray-600 font-semibold">Amount</th>
-                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Expected Return</th>
+                                <th class="text-left py-3 px-4 text-gray-600 font-semibold">Monthly Return</th>
                                 <th class="text-left py-3 px-4 text-gray-600 font-semibold">Payment Status</th>
                                 <th class="text-left py-3 px-4 text-gray-600 font-semibold">Investment Status</th>
                                 <th class="text-left py-3 px-4 text-gray-600 font-semibold">Proof</th>
@@ -246,7 +246,7 @@
                         <p class="font-semibold">${inv.investment_plans?.title || 'N/A'}</p>
                         <p class="text-sm text-gray-500">${inv.investment_plans?.duration_months} months - ${inv.investment_plans?.roi_percentage}% ROI</p>
                     </td>
-                    <td class="py-4 px-4 font-semibold text-primary">₦${parseFloat(inv.slot_price).toLocaleString()}</td>
+                    <td class="py-4 px-4 font-semibold text-primary">₦${parseFloat(inv.total_invested).toLocaleString()}</td>
                     <td class="py-4 px-4 font-semibold text-accent">₦${parseFloat(inv.expected_monthly_return).toLocaleString()}</td>
                     <td class="py-4 px-4"><span class="px-3 py-1 rounded-full text-xs font-semibold ${getPaymentStatusClass(inv.payment_status)}">${inv.payment_status}</span></td>
                     <td class="py-4 px-4"><span class="px-3 py-1 rounded-full text-xs font-semibold ${getInvestmentStatusClass(inv.investment_status)}">${inv.investment_status}</span></td>
@@ -284,20 +284,31 @@
             }
         }
 
-        function viewProof(path) {
-            const modal = document.getElementById('proofModal');
-            const content = document.getElementById('proofContent');
+    function viewProof(url) {
+        const modal = document.getElementById('proofModal');
+        const content = document.getElementById('proofContent');
 
-            const ext = path.split('.').pop().toLowerCase();
-            if (ext === 'pdf') {
-                content.innerHTML = `<iframe src="/${path}" class="w-full h-96 rounded-lg border"></iframe>`;
-            } else {
-                content.innerHTML = `<img src="/${path}" class="max-h-96 mx-auto rounded-lg" alt="Proof of Payment">`;
-            }
+        const ext = url.split('.').pop().toLowerCase();
 
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+        if (ext === 'pdf') {
+            content.innerHTML = `
+                <iframe 
+                    src="${url}" 
+                    class="w-full h-96 rounded-lg border">
+                </iframe>
+            `;
+        } else {
+            content.innerHTML = `
+                <img 
+                    src="${url}" 
+                    class="max-h-96 mx-auto rounded-lg" 
+                    alt="Proof of Payment">
+            `;
         }
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+}
 
         function closeProofModal() {
             const modal = document.getElementById('proofModal');
